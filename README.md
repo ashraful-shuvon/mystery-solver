@@ -1,4 +1,4 @@
-# Mystery Solver project front-end page:s logi,n logout, and profile.
+# Mystery Solver project front-end pages: login, logout, and profile.
 
 ### Languages used - HTML, CSS and JavaScript
 

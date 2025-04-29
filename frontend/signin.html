@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Auth Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .form-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f4f4;
+      padding: 2rem;
+      flex-direction: column;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #132503;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #666664;
+    }
+
+    .google-btn {
+      background-color: #fff;
+      color: #444;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .google-btn img {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .toggle-link {
+      margin-top: 1rem;
+      text-align: center;
+      cursor: pointer;
+      color: #007bff;
+    }
+
+    .toggle-link:hover {
+      text-decoration: underline;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('https://freedesignfile.com/upload/2018/05/Mysterious-girl-Stock-Photo.jpg') center center/cover no-repeat;
+    }
+
+    .image-title{
+        color: #f4f4f4;
+        display: flex;
+        justify-content: center; /* centers horizontally */
+        align-items: center; /* centers vertically */
+        height: 170vh;
+        font-style: italic;
+        font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="form-section">
+    <div class="form-container" id="formContainer">
+      <h2 id="formTitle">Sign In</h2>
+
+      <input type="email" placeholder="Email" id="email" />
+      <input type="password" placeholder="Password" id="password" />
+
+      <div id="extraFields" style="display: none;">
+        <input type="text" placeholder="Full Name" id="fullname" />
+        <input type="password" placeholder="Confirm Password" id="confirmPassword" />
+      </div>
+
+      <button id="submitBtn">Sign In</button>
+
+      <button class="google-btn">
+        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Icon"/>
+        Continue with Google
+      </button>
+
+      <div class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</div>
+    </div>
+  </div>
+  <div class="image-section">
+    <div class="image-title">
+        <h1> Mystery Solver AI</h1>
+    </div>
+  </div>
+</div>
+
+<script>
+  let isSignUp = false;
+
+  function toggleForm() {
+    const formTitle = document.getElementById("formTitle");
+    const extraFields = document.getElementById("extraFields");
+    const toggleLink = document.querySelector(".toggle-link");
+    const submitBtn = document.getElementById("submitBtn");
+
+    isSignUp = !isSignUp;
+
+    if (isSignUp) {
+      formTitle.textContent = "Sign Up";
+      extraFields.style.display = "block";
+      submitBtn.textContent = "Sign Up";
+      toggleLink.textContent = "Already have an account? Sign In";
+    } else {
+      formTitle.textContent = "Sign In";
+      extraFields.style.display = "none";
+      submitBtn.textContent = "Sign In";
+      toggleLink.textContent = "Don't have an account? Sign Up";
+    }
+  }
+</script>
+
+</body>
+</html>

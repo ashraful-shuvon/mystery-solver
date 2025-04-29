@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #161A23;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+
+    .user-info {
+      margin-bottom: 2rem;
+    }
+
+    .user-info h3 {
+      font-size: 1.1rem;
+    }
+
+    .nav-section, .bottom-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-section button, .bottom-nav button {
+      background: none;
+      border: none;
+      color: #ced4da;
+      text-align: left;
+      padding: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-section button:hover, .bottom-nav button:hover {
+      color: white;
+      background-color: #495057;
+      border-radius: 6px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 0.5rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .input-group input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-upgrade {
+      background-color: #007bff;
+      color: white;
+      margin-top: 1rem;
+    }
+
+    .btn-upgrade:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-delete {
+      background-color: #dc3545;
+      color: white;
+      margin-top: 1rem;
+    }
+
+    .btn-delete:hover {
+      background-color: #c82333;
+    }
+
+    .history-item {
+      background-color: #f1f1f1;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div>
+      <div class="user-info">
+        <p><strong>islam@gmail.com</strong> </p>
+        <p><strong>Jannatul Islam</strong> </p>
+      </div>
+
+      <div class="nav-section">
+        <button data-page="dashboard.html">📊 Dashboard</button>
+        <button data-page="invite.html">🤝 Invite Friends</button>
+        <button data-page="feedback.html">💬 Feedback</button>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button data-page="settings.html">⚙️ Settings</button>
+      <button data-page="help.html">❓ Help</button>
+      <button id="logout-btn">🚪 Logout</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Personal Information -->
+    <div class="section">
+      <h2>👤 Personal Information</h2>
+      <div class="input-group">
+        <input type="email" placeholder="Email" value="islam@email.com" />
+        <input type="text" placeholder="Full Name" value="Jannatul Islam" />
+        <input type="password" placeholder="Password" value="********" />
+        <input type="password" placeholder="Reset Password" />
+      </div>
+    </div>
+
+    <!-- Subscription Plan -->
+    <div class="section">
+      <h2>💎 Subscription Plan</h2>
+      <p>You are currently on the <strong>Free</strong> plan.</p>
+      <button class="btn btn-upgrade">Upgrade Now</button>
+    </div>
+
+    <!-- History -->
+    <div class="section">
+      <h2>🕵️ Past Mystery Solving History</h2>
+      <div class="history-item">🔍 Solved: The Case of the Missing Key – March 28, 2025</div>
+      <div class="history-item">🧩 Solved: The Phantom Clue – Feb 10, 2025</div>
+      <div class="history-item">🔦 Solved: Secrets of the Abandoned House – Jan 5, 2025</div>
+    </div>
+
+    <!-- Delete Account -->
+    <div class="section">
+      <h2>⚠️ Danger Zone</h2>
+      <p>Once you delete your account, there is no going back. Please be certain.</p>
+      <button class="btn btn-delete">Delete Account</button>
+    </div>
+  </div>
+
+  <script>
+    // Reset password functionality
+    const resetInput = document.querySelector('input[placeholder="Reset Password"]');
+    resetInput.addEventListener('blur', () => {
+      const newPassword = resetInput.value;
+      if (newPassword.length > 0) {
+        alert("Password reset to: " + newPassword);
+        console.log("Password reset to:", newPassword);
+        resetInput.value = "";
+      }
+    });
+
+    // Delete account
+    const deleteBtn = document.querySelector('.btn-delete');
+    deleteBtn.addEventListener('click', () => {
+      if (confirm("Are you sure you want to delete your account? This cannot be undone!")) {
+        alert("Account deleted!");
+        window.location.href = 'signup.html';
+      }
+    });
+
+    // Logout button
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      alert("You have been logged out.");
+      window.location.href = 'signin.html';
+    });
+
+    // Navigation for sidebar buttons
+    document.querySelectorAll('[data-page]').forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-page');
+        window.location.href = target;
+      });
+    });
+  </script>
+
+</body>
+</html>

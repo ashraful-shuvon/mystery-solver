@@ -2,4 +2,4 @@
 
 ### Languages used - HTML, CSS and JavaScript
 
-#### Go live - <i> 
+#### Go live - <i> https://ashraful-shuvon.github.io/mystery-solver/frontend/dashboard.html <i/>
